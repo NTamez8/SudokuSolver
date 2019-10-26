@@ -8,26 +8,26 @@ namespace SudokuSolver
 {
     public class Solution
     {
-        public void SolveSudoku(char[][] board)
+        public static bool SolveSudoku(char[][] board)
         {
 
 
             if (SolvePuzzle(board, 0, 0))
             {
-                Console.WriteLine("Solved");
+                return true;
 
             }
             else
             {
 
-                Console.WriteLine("Not solvable");
+                return false;
             }
 
 
         }
 
 
-        public bool SolvePuzzle(char[][] sudokuBoard, int startRow, int startColumn)
+        private static bool SolvePuzzle(char[][] sudokuBoard, int startRow, int startColumn)
         {
 
             for (int row = startRow; row < 9; row++)
@@ -76,7 +76,7 @@ namespace SudokuSolver
         }
 
 
-        public bool Validate(char[][] sudokuBoard, int row, int column, int possibleValue)
+        private static bool Validate(char[][] sudokuBoard, int row, int column, int possibleValue)
         {
 
             return isValidRow(sudokuBoard, row, column, possibleValue)
@@ -84,7 +84,7 @@ namespace SudokuSolver
                 && isValidSquare(sudokuBoard, row, column, possibleValue);
 
         }
-        public bool isValidRow(char[][] sudokuBoard, int row, int column, int possibleValue)
+        private static bool isValidRow(char[][] sudokuBoard, int row, int column, int possibleValue)
         {
 
             char temp = (char)(48 + possibleValue);
@@ -98,7 +98,7 @@ namespace SudokuSolver
             return true;
         }
 
-        public bool isValidColumn(char[][] sudokuBoard, int row, int column, int possibleValue)
+        private static  bool isValidColumn(char[][] sudokuBoard, int row, int column, int possibleValue)
         {
 
             char temp = (char)(48 + possibleValue);
@@ -112,7 +112,7 @@ namespace SudokuSolver
             return true;
         }
 
-        public bool isValidSquare(char[][] sudokuBoard, int row, int column, int possibleValue)
+        private static bool isValidSquare(char[][] sudokuBoard, int row, int column, int possibleValue)
         {
             char temp = (char)(48 + possibleValue);
             int[] hold = new int[] { 0, 3, 6 };
